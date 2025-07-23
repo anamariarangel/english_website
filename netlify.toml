@@ -1,16 +1,27 @@
 [build]
-  publish = "dist"
+  # Comando para build do seu projeto (ajuste conforme necessário)
   command = "npm run build"
+  # Diretório onde estão os arquivos buildados
+  publish = "dist"
 
 [functions]
-  directory = "api"
+  # Diretório onde estão as Netlify Functions
+  directory = "netlify/functions"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  # Redirecionar chamadas da API antiga para as novas functions
+  from = "/api/place-details"
+  to = "/.netlify/functions/place-details"
   status = 200
 
 [[redirects]]
+  # Redirecionar chamadas da API antiga para as novas functions
+  from = "/api/places"
+  to = "/.netlify/functions/places"
+  status = 200
+
+[[redirects]]
+  # Redirecionar todas as outras rotas para index.html (para SPAs)
   from = "/*"
   to = "/index.html"
   status = 200
