@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CTAButton from '../comon/CTAButton';
-import { fetchGoogleReviews } from '../../../api/googleReviews';
+import { fetchGoogleReviews } from '../../../netlify/GoogleReviews';
 import { fallbackTestimonials } from '../../data/content';
 
 const TestimonialsSection = () => {
