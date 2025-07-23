@@ -1,0 +1,1452 @@
+// ===========================
+// IMPORTS
+// ===========================
+
+// ===========================
+// VARIABLES
+// ===========================
+$primary-color: #3b82f6;
+$primary-dark: #1e40af;
+$success-color: #10b981;
+$danger-color: #ef4444;
+$text-color: #1e293b;
+$text-light: #64748b;
+$text-muted: #94a3b8;
+$text-gray: #374151;
+$bg-light: #f8fafc;
+$bg-lighter: #e2e8f0;
+$white: #ffffff;
+$black: #000000;
+$star-color: #fbbf24;
+$star-empty: #d1d5db;
+$border-color: #e2e8f0;
+$border-light: #cbd5e1;
+$font-family: 'Poppins', sans-serif;
+$max-width: 1200px;
+$border-radius: 15px;
+$border-radius-sm: 50px;
+$box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+// ===========================
+// MIXINS
+// ===========================
+@mixin flex-center($direction: column) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin section-padding($top: 80px, $bottom: 80px) {
+  padding: $top 0 $bottom 0;
+}
+
+@mixin transition($property: all, $duration: 0.3s, $easing: ease) {
+  transition: $property $duration $easing;
+}
+
+@mixin card-hover {
+  @include transition(transform, 0.3s, ease);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@mixin text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@mixin gradient-text {
+  background: linear-gradient(135deg, $primary-color, $primary-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ===========================
+// KEYFRAMES
+// ===========================
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// ===========================
+// BASE STYLES
+// ===========================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family;
+  line-height: 1.6;
+  color: $text-color;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.container {
+  max-width: $max-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.landing-page {
+  width: 100%;
+}
+
+// ===========================
+// HEADER COMPONENT
+// ===========================
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  padding: 15px 50px;
+  background: rgba($white, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $border-color;
+
+  &__logo {
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__nav {
+    @include flex-center(row);
+    padding: 0;
+    margin: 0;
+  }
+
+  &__nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-item {
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: '|';
+      position: absolute;
+      right: -15px;
+      color: $text-muted;
+      font-weight: 300;
+      opacity: 0.6;
+    }
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    color: $text-color;
+    font-weight: 500;
+    @include transition(color);
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+// ===========================
+// HERO SECTION
+// ===========================
+.hero {
+  @include flex-center;
+  @include section-padding(120px, 80px);
+  background-image: url('/src/assets/images/flag.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+    opacity: 0.1;
+    z-index: 1;
+  }
+
+  &__content {
+    @include flex-center;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    @include text-shadow;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  &__subtitle {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0.95;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.3s both;
+  }
+}
+
+// ===========================
+// CTA BUTTON COMPONENT
+// ===========================
+.cta-button {
+  display: inline-block;
+  padding: 18px 40px;
+  border-radius: $border-radius-sm;
+  font-family: $font-family;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  @include transition;
+  background: $success-color;
+  color: $white;
+  box-shadow: $box-shadow-lg;
+  animation: fadeInUp 1s ease-out 0.6s both;
+  @include flex-center(row);
+  margin: 50px auto;
+  align-self: center;
+
+  &__link {
+    color: $white;
+    text-decoration: none;
+    @include flex-center(row);
+
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  &:hover {
+    background: $danger-color;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+// ===========================
+// PAIN POINTS SECTION
+// ===========================
+.pain-points {
+  @include flex-center;
+  @include section-padding;
+  background: $bg-light;
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: $primary-color;
+    font-weight: 700;
+    @include gradient-text;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  &__item {
+    background: $white;
+    padding: 30px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    @include card-hover;
+    border-left: 4px solid $primary-color;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: $primary-color;
+    display: block;
+  }
+
+  &__text {
+    color: $text-gray;
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  &__conclusion {
+    max-width: 800px;
+    text-align: center;
+    color: $text-light;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0 auto;
+  }
+}
+
+// ===========================
+// METHOD SECTION
+// ===========================
+.method {
+  @include flex-center;
+  @include section-padding;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: $white;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    padding-bottom: 50px;
+    opacity: 0.95;
+    max-width: 700px;
+    z-index: 1;
+    margin: auto;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__item {
+    @include flex-center;
+    text-align: center;
+    padding: 30px 20px;
+    border: 2px solid rgba($white, 0.2);
+    border-radius: $border-radius;
+    min-height: 250px;
+    @include card-hover;
+    background: rgba($white, 0.05);
+    backdrop-filter: blur(10px);
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: $white;
+    display: block;
+  }
+
+  &__text {
+    color: $white;
+    line-height: 1.7;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+}
+
+// ===========================
+// DIFFERENTIALS SECTION
+// ===========================
+.differentials {
+  @include flex-center;
+  @include section-padding;
+  background: $white;
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: $primary-color;
+    font-weight: 700;
+    @include gradient-text;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: $primary-color;
+    display: block;
+  }
+
+  &__item {
+    background: $bg-light;
+    padding: 30px;
+    border-radius: $border-radius;
+    border-left: 5px solid $primary-color;
+    @include transition;
+    @include card-hover;
+
+    &:hover {
+      background: $bg-lighter;
+      transform: translateY(-5px) translateX(5px);
+    }
+
+    &-title {
+      color: $primary-color;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    &-text {
+      color: $text-gray;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+  }
+}
+
+// ===========================
+// TESTIMONIALS SECTION
+// ===========================
+.testimonials {
+  @include section-padding;
+  background: linear-gradient(135deg, $bg-light 0%, $bg-lighter 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  // Header
+  &__header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 16px;
+    @include gradient-text;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    color: $text-light;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  // Stats
+  &__stats {
+    @include flex-center(row);
+    gap: 60px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  &__stat {
+    text-align: center;
+
+    &-number {
+      display: block;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: $primary-color;
+      line-height: 1;
+    }
+
+    &-stars {
+      margin: -10px;
+    }
+
+    &-label {
+      font-size: 0.9rem;
+      color: $text-light;
+      font-weight: 500;
+    }
+  }
+
+  // Loading
+  &__loading {
+    @include flex-center;
+    gap: 20px;
+    padding: 80px 0;
+    color: $text-light;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $border-light;
+    border-top: 4px solid $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  // Error
+  &__error {
+    background: rgba($danger-color, 0.1);
+    border: 1px solid rgba($danger-color, 0.3);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-top: 20px;
+    color: $danger-color;
+    font-size: 0.9rem;
+    
+    p {
+      margin: 0;
+    }
+  }
+
+  // Carousel
+  &__carousel {
+    @include flex-center(row);
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__nav {
+    background: $white;
+    border: 2px solid $border-color;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    @include flex-center;
+    font-size: 24px;
+    color: $primary-color;
+    cursor: pointer;
+    @include transition;
+    box-shadow: $box-shadow;
+    flex-shrink: 0;
+
+    &:hover {
+      background: $primary-color;
+      color: $white;
+      transform: scale(1.1);
+      box-shadow: $box-shadow-lg;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    max-width: 800px;
+  }
+
+  // Card
+  &__card {
+    background: $white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: $box-shadow-lg;
+    border: 1px solid $border-color;
+    position: relative;
+    @include card-hover;
+  }
+
+  // Quote
+  &__quote {
+    position: relative;
+    margin-bottom: 30px;
+
+    &-mark {
+      font-size: 4rem;
+      color: $primary-color;
+      opacity: 0.3;
+      font-family: serif;
+      position: absolute;
+      line-height: 1;
+
+      &:first-child {
+        top: -10px;
+        left: -10px;
+      }
+
+      &--end {
+        bottom: -30px;
+        right: -10px;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $text-gray;
+    font-style: italic;
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  // Rating
+  &__rating {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__star {
+    font-size: 1.5rem;
+    color: $star-empty;
+    margin: 0 2px;
+    @include transition(color);
+
+    &--filled {
+      color: $star-color;
+    }
+  }
+
+  // Author
+  &__author {
+    @include flex-center(row);
+    gap: 15px;
+
+    &-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid $border-color;
+      flex-shrink: 0;
+    }
+
+    &-info {
+      text-align: center;
+    }
+
+    &-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: $text-color;
+      margin: 0 0 8px 0;
+    }
+
+    &-achievement {
+      font-size: 0.9rem;
+      color: $primary-color;
+      font-weight: 500;
+      margin: 0 0 4px 0;
+    }
+  }
+
+  &__date {
+    font-size: 0.8rem;
+    color: $text-muted;
+  }
+
+  // Indicators
+  &__indicators {
+    @include flex-center(row);
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+
+  &__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: $border-light;
+    cursor: pointer;
+    @include transition;
+
+    &--active {
+      background: $primary-color;
+      transform: scale(1.2);
+    }
+
+    &:hover:not(&--active) {
+      background: rgba($primary-color, 0.5);
+      transform: scale(1.1);
+    }
+  }
+
+  // CTA
+  &__cta {
+    text-align: center;
+
+    &-text {
+      font-size: 1.2rem;
+      color: $text-gray;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+  }
+
+  // Placeholder para quando não há dados
+  &__placeholder {
+    text-align: center;
+    background: $white;
+    padding: 50px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    font-style: italic;
+    color: $text-muted;
+    line-height: 1.8;
+    width: 100%;
+  }
+}
+
+// ===========================
+// ABOUT SECTION
+// ===========================
+.about {
+  @include flex-center;
+  @include section-padding;
+  background: $white;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 400px;
+    @include flex-center;
+    font-size: 1.2rem;
+    color: $text-muted;
+    text-align: center;
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    img {
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: $primary-color;
+    font-weight: 700;
+    @include gradient-text;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: $text-gray;
+  }
+}
+
+// ===========================
+// FINAL CTA SECTION
+// ===========================
+.final-cta {
+  @include flex-center;
+  @include section-padding;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: $white;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    line-height: 1.3;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ===========================
+// RESPONSIVE DESIGN
+// ===========================
+
+// Tablets e dispositivos médios
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+
+  .header {
+    padding: 15px 30px;
+  }
+
+  .hero {
+    &__title {
+      font-size: 3rem;
+    }
+
+    &__subtitle {
+      font-size: 1.3rem;
+    }
+  }
+
+  .method__list,
+  .pain-points__list,
+  .differentials__grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+// Smartphones e tablets pequenos
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    position: relative;
+
+    &__nav-item {
+      margin: 0 10px;
+
+      &:not(:last-child)::after {
+        right: -8px;
+      }
+    }
+  }
+
+  .hero {
+    @include section-padding(100px, 60px);
+    min-height: 70vh;
+
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1.2rem;
+      width: 95%;
+    }
+  }
+
+  .pain-points,
+  .method,
+  .differentials,
+  .testimonials,
+  .about,
+  .final-cta {
+    @include section-padding(60px, 60px);
+  }
+
+  .pain-points {
+    &__list {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    &__conclusion {
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  }
+
+  .method {
+    &__list {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    &__item {
+      min-height: 200px;
+      padding: 25px 20px;
+    }
+  }
+
+  .differentials {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .about {
+    &__content {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 30px;
+    }
+
+    &__photo {
+      height: 300px;
+    }
+  }
+
+  .testimonials {
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__stats {
+      gap: 30px;
+      flex-direction: column;
+    }
+
+    &__stat {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      &-number {
+        font-size: 2rem;
+      }
+    }
+
+    &__carousel {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__nav {
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+    }
+
+    &__card {
+      padding: 30px 25px;
+    }
+
+    &__text {
+      font-size: 1rem;
+      padding: 0 10px;
+    }
+
+    &__quote-mark {
+      font-size: 3rem;
+
+      &:first-child {
+        top: -5px;
+        left: -5px;
+      }
+
+      &--end {
+        bottom: -20px;
+        right: -5px;
+      }
+    }
+
+    &__author {
+      flex-direction: column;
+      gap: 10px;
+
+      &-photo {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  .cta-button {
+    margin: 30px auto;
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+
+  // Títulos responsivos
+  .pain-points__title,
+  .method__title,
+  .differentials__title,
+  .testimonials__title,
+  .about__title,
+  .final-cta__title {
+    font-size: 2rem;
+  }
+}
+
+// Smartphones pequenos
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .header {
+    padding: 15px;
+    gap: 10px;
+
+    &__nav-item {
+      margin: 0 8px;
+      font-size: 0.9rem;
+    }
+  }
+
+  .hero {
+    @include section-padding(80px, 50px);
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 1.1rem;
+    }
+  }
+
+  .pain-points,
+  .method,
+  .differentials,
+  .testimonials,
+  .about,
+  .final-cta {
+    @include section-padding(50px, 50px);
+  }
+
+  .pain-points {
+    &__item {
+      padding: 25px 20px;
+    }
+
+    &__icon {
+      font-size: 1.8rem;
+    }
+
+    &__text {
+      font-size: 0.95rem;
+    }
+
+    &__conclusion {
+      font-size: 1rem;
+    }
+  }
+
+  .method {
+    &__description {
+      font-size: 1.1rem;
+  
+    }
+
+    &__item {
+      padding: 20px 15px;
+      min-height: 180px;
+    }
+
+    &__icon {
+      font-size: 2rem;
+    }
+
+    &__text {
+      font-size: 0.95rem;
+    }
+  }
+
+  .differentials {
+    &__grid {
+      gap: 20px;
+    }
+
+    &__item {
+      padding: 25px 20px;
+
+      &-title {
+        font-size: 1.2rem;
+      }
+
+      &-text {
+        font-size: 0.95rem;
+      }
+    }
+
+    &__icon {
+      font-size: 1.8rem;
+    }
+  }
+
+  .testimonials {
+    &__card {
+      padding: 25px 20px;
+    }
+
+    &__text {
+      font-size: 0.95rem;
+      padding: 0 5px;
+    }
+
+    &__author {
+      &-name {
+        font-size: 1rem;
+      }
+
+      &-achievement {
+        font-size: 0.85rem;
+      }
+    }
+
+    &__cta-text {
+      font-size: 1.1rem;
+    }
+
+    &__quote-mark {
+      font-size: 2.5rem;
+    }
+  }
+
+  .about {
+    &__photo {
+      height: 250px;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+    }
+
+    &__description {
+      font-size: 1.1rem;
+    }
+  }
+
+  .cta-button {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+    margin: 25px auto;
+  }
+
+  // Títulos ainda menores para telas muito pequenas
+  .pain-points__title,
+  .method__title,
+  .differentials__title,
+  .testimonials__title,
+  .about__title,
+  .final-cta__title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+}
+
+// Dispositivos muito pequenos (< 360px)
+@media (max-width: 360px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .header {
+    padding: 10px;
+
+    &__logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    &__nav-item {
+      margin: 0 5px;
+      font-size: 0.85rem;
+    }
+  }
+
+  .hero {
+    @include section-padding(70px, 40px);
+
+    &__title {
+      font-size: 1.8rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .pain-points,
+  .method,
+  .differentials,
+  .testimonials,
+  .about,
+  .final-cta {
+    @include section-padding(40px, 40px);
+  }
+
+  .pain-points__title,
+  .method__title,
+  .differentials__title,
+  .testimonials__title,
+  .about__title,
+  .final-cta__title {
+    font-size: 1.6rem;
+  }
+
+  .testimonials {
+    &__nav {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+
+    &__card {
+      padding: 20px 15px;
+    }
+
+    &__author-photo {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+// Melhorias adicionais para acessibilidade e UX
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Modo escuro (se necessário no futuro)
+@media (prefers-color-scheme: dark) {
+  // Variáveis podem ser redefinidas aqui se necessário
+}
+
+// Impressão
+@media print {
+  .header {
+    position: static;
+    background: none;
+    border: none;
+  }
+
+  .hero {
+    background: none;
+    color: $text-color;
+
+    &__overlay,
+    &::before {
+      display: none;
+    }
+  }
+
+  .method,
+  .final-cta {
+    background: none;
+    color: $text-color;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .testimonials::before {
+    display: none;
+  }
+
+  .cta-button {
+    background: none;
+    color: $text-color;
+    border: 2px solid $text-color;
+  }
+}
+
+// Estados de foco melhorados para acessibilidade
+a:focus,
+button:focus,
+.cta-button:focus,
+.testimonials__nav:focus,
+.testimonials__indicator:focus {
+  outline: 3px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Melhorias para leitores de tela
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Estados de carregamento e erro melhorados
+.loading-skeleton {
+  background: linear-gradient(90deg, $bg-lighter 25%, $bg-light 50%, $bg-lighter 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Melhorias para hover em dispositivos touch
+@media (hover: hover) and (pointer: fine) {
+  .pain-points__item:hover,
+  .differentials__item:hover,
+  .method__item:hover,
+  .testimonials__card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// Ajustes finais para consistência visual
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $primary-color;
+  text-align: center;
+  margin-bottom: 20px;
+  @include gradient-text;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: $text-light;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 40px;
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+}

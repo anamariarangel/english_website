@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# Build final
+dist/
+
+# Arquivos temporários
+*.log
+.env
+.DS_Store
+
+# Sistema operacional
+Thumbs.db
