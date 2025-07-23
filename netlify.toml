@@ -3,8 +3,9 @@
   publish = "dist"
   functions = "netlify/functions"
 
-[build.environment]
-  GOOGLE_PLACES_API_KEY = "your-api-key-here"
+# Remove a seção de ambiente para a chave da API.
+# A variável de ambiente GOOGLE_PLACES_API_KEY deve ser configurada
+# exclusivamente no painel de controle do Netlify.
 
 [[redirects]]
   from = "/api/google-reviews"
@@ -25,3 +26,9 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+  [[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
