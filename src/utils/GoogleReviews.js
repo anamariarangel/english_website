@@ -2,8 +2,8 @@ const PLACE_ID = 'ChIJI_1Dn1FDlpQR51FKnrXqJtM';
 
 export async function fetchGoogleReviews() {
   try {
-    // URL corrigida para usar o redirecionamento definido no netlify.toml
-    const response = await fetch(`/api/place-details?place_id=${PLACE_ID}`);
+    // Chama a função Netlify diretamente, ignorando o redirecionamento
+    const response = await fetch(`/.netlify/functions/place-details?place_id=${PLACE_ID}`);
     
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     
