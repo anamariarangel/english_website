@@ -2,14 +2,15 @@ const PLACE_ID = 'ChIJI_1Dn1FDlpQR51FKnrXqJtM';
 
 export async function fetchGoogleReviews() {
   try {
-    const response = await fetch(`/.netlify/functions/place-details?place_id=${PLACE_ID}`);
+    // URL corrigida para usar o redirecionamento definido no netlify.toml
+    const response = await fetch(`/api/place-details?place_id=${PLACE_ID}`);
     
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     
-    const text = await response.text(); // Primeiro capture como texto
-    console.log("Resposta bruta:", text); // Depure aqui
+    const text = await response.text();
+    console.log("Resposta bruta:", text);
     
-    return JSON.parse(text); // Depois converta
+    return JSON.parse(text);
   } catch (error) {
     console.error('Erro ao buscar reviews:', error);
     throw error;
