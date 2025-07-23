@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CTAButton from '../comon/CTAButton';
-import { fetchGoogleReviews } from '../../../netlify/GoogleReviews';
+import { fetchGoogleReviews } from '../../utils/googleReviews';
 import { fallbackTestimonials } from '../../data/content';
 
 const TestimonialsSection = () => {
@@ -15,6 +15,7 @@ const TestimonialsSection = () => {
       setLoading(true);
       setError(null);
       try {
+        // Use the existing utility function
         const data = await fetchGoogleReviews();
 
         if (data.status === 'OK' && data.result) {
