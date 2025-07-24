@@ -6,7 +6,7 @@ const AboutSection = () => (
     <div className="container">
       <div className="about__content">
         <div className="about__photo">
-          <img src="/src/assets/images/foto_isadora.jpg" width="350" height="350" alt="Isadora Alves" />
+          <img src="../../assets/images/foto_isadora.jpg" width="350" height="350" alt="Isadora Alves" />
         </div>
         <div className="about__text">
           <h2 className="about__title">Oi! Eu sou a Isadora!</h2>
