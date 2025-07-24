@@ -1,5 +1,6 @@
 import React from 'react';
 import logoImage from '../../assets/images/coruja-vetor.png';
+import '../../assets/styles/header.scss';
 
 const Header = () => (
   <header className="header">

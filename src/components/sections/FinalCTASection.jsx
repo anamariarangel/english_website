@@ -1,5 +1,6 @@
 import React from 'react';
 import CTAButton from '../comon/CTAButton';
+import '../../assets/styles/finalcta.scss';
 
 const FinalCTASection = () => (
   <section className="final-cta">

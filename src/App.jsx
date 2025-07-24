@@ -1,6 +1,6 @@
 import React from 'react';
 import EnglishLandingPage from './pages/EnglishLandingPage';
-import './assets/styles/global.scss';
+
 
 function App() {
   return (

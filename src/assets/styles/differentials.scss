@@ -1,0 +1,64 @@
+// ===========================
+// IMPORTS
+// ===========================
+  @import './initialize';
+  
+// ===========================
+// DIFFERENTIALS SECTION
+// ===========================
+.differentials {
+  @include flex-center;
+  @include section-padding;
+  background: $white;
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: $primary-color;
+    font-weight: 700;
+    @include gradient-text;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: $primary-color;
+    display: block;
+  }
+
+  &__item {
+    background: $bg-light;
+    padding: 30px;
+    border-radius: $border-radius;
+    border-left: 5px solid $primary-color;
+    @include transition;
+    @include card-hover;
+
+    &:hover {
+      background: $bg-lighter;
+      transform: translateY(-5px) translateX(5px);
+    }
+
+    &-title {
+      color: $primary-color;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    &-text {
+      color: $text-gray;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+  }
+}

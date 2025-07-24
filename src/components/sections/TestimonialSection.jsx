@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CTAButton from '../comon/CTAButton';
 import { fetchGoogleReviews } from '../../utils/GoogleReviews';
 import { fallbackTestimonials } from '../../data/content';
+import '../../assets/styles/testimonials.scss'
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);

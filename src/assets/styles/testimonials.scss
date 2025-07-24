@@ -1,0 +1,308 @@
+// ===========================
+// IMPORTS
+// ===========================
+  @import './initialize';
+
+// ===========================
+// TESTIMONIALS SECTION
+// ===========================
+.testimonials {
+  @include section-padding;
+  background: linear-gradient(135deg, $bg-light 0%, $bg-lighter 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  // Header
+  &__header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 16px;
+    @include gradient-text;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    color: $text-light;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  // Stats
+  &__stats {
+    @include flex-center(row);
+    gap: 60px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  &__stat {
+    text-align: center;
+
+    &-number {
+      display: block;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: $primary-color;
+      line-height: 1;
+    }
+
+    &-stars {
+      margin: -10px;
+    }
+
+    &-label {
+      font-size: 0.9rem;
+      color: $text-light;
+      font-weight: 500;
+    }
+  }
+
+  // Loading
+  &__loading {
+    @include flex-center;
+    gap: 20px;
+    padding: 80px 0;
+    color: $text-light;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $border-light;
+    border-top: 4px solid $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  // Error
+  &__error {
+    background: rgba($danger-color, 0.1);
+    border: 1px solid rgba($danger-color, 0.3);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-top: 20px;
+    color: $danger-color;
+    font-size: 0.9rem;
+    
+    p {
+      margin: 0;
+    }
+  }
+
+  // Carousel
+  &__carousel {
+    @include flex-center(row);
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__nav {
+    background: $white;
+    border: 2px solid $border-color;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    @include flex-center;
+    font-size: 24px;
+    color: $primary-color;
+    cursor: pointer;
+    @include transition;
+    box-shadow: $box-shadow;
+    flex-shrink: 0;
+
+    &:hover {
+      background: $primary-color;
+      color: $white;
+      transform: scale(1.1);
+      box-shadow: $box-shadow-lg;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    max-width: 800px;
+  }
+
+  // Card
+  &__card {
+    background: $white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: $box-shadow-lg;
+    border: 1px solid $border-color;
+    position: relative;
+    @include card-hover;
+  }
+
+  // Quote
+  &__quote {
+    position: relative;
+    margin-bottom: 30px;
+
+    &-mark {
+      font-size: 4rem;
+      color: $primary-color;
+      opacity: 0.3;
+      font-family: serif;
+      position: absolute;
+      line-height: 1;
+
+      &:first-child {
+        top: -10px;
+        left: -10px;
+      }
+
+      &--end {
+        bottom: -30px;
+        right: -10px;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $text-gray;
+    font-style: italic;
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  // Rating
+  &__rating {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__star {
+    font-size: 1.5rem;
+    color: $star-empty;
+    margin: 0 2px;
+    @include transition(color);
+
+    &--filled {
+      color: $star-color;
+    }
+  }
+
+  // Author
+  &__author {
+    @include flex-center(row);
+    gap: 15px;
+
+    &-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid $border-color;
+      flex-shrink: 0;
+    }
+
+    &-info {
+      text-align: center;
+    }
+
+    &-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: $text-color;
+      margin: 0 0 8px 0;
+    }
+
+    &-achievement {
+      font-size: 0.9rem;
+      color: $primary-color;
+      font-weight: 500;
+      margin: 0 0 4px 0;
+    }
+  }
+
+  &__date {
+    font-size: 0.8rem;
+    color: $text-muted;
+  }
+
+  // Indicators
+  &__indicators {
+    @include flex-center(row);
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+
+  &__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: $border-light;
+    cursor: pointer;
+    @include transition;
+
+    &--active {
+      background: $primary-color;
+      transform: scale(1.2);
+    }
+
+    &:hover:not(&--active) {
+      background: rgba($primary-color, 0.5);
+      transform: scale(1.1);
+    }
+  }
+
+  // CTA
+  &__cta {
+    text-align: center;
+
+    &-text {
+      font-size: 1.2rem;
+      color: $text-gray;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+  }
+
+  // Placeholder para quando não há dados
+  &__placeholder {
+    text-align: center;
+    background: $white;
+    padding: 50px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    font-style: italic;
+    color: $text-muted;
+    line-height: 1.8;
+    width: 100%;
+  }
+}
