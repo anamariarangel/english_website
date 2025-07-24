@@ -1,10 +1,10 @@
 // netlify/functions/place-details.js
-const fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 exports.handler = async (event, context) => {
   // Configurar CORS
   const headers = {
-    'Access-Control-Allow-Origin': '*', // Permite todas as origens ou especifique o seu domínio
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET',
   };
