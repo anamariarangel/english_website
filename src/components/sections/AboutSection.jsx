@@ -1,6 +1,6 @@
 import React from 'react';
 import CTAButton from '../comon/CTAButton';
-import fotoIsadora from '../assets/images/foto_isadora.jpg';
+import fotoIsadora from '../../assets/images/foto_isadora.jpg';
 
 const AboutSection = () => (
   <section className="about">
