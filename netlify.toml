@@ -1,9 +1,14 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  functions = "netlify/functions"
+  functions = "netlify"
 
-# Redirecionamentos para as funções (recomendado)
+[[redirects]]
+  from = "/api/google-reviews"
+  to = "/.netlify/functions/google-reviews"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/api/place-details"
   to = "/.netlify/functions/place-details"
@@ -16,13 +21,6 @@
   status = 200
   force = true
 
-[[redirects]]
-  from = "/api/google-reviews"
-  to = "/.netlify/functions/google-reviews"
-  status = 200
-  force = true
-
-# Catch-all para a aplicação de página única (SPA)
 [[redirects]]
   from = "/*"
   to = "/index.html"
