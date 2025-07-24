@@ -18,7 +18,7 @@ const Header = () => (
           <a href="#testimonials" className="header__nav-link">Depoimentos</a>
         </li>
         <li className="header__nav-item">
-          <a href="https://wa.me/5516999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <a href="https://wa.me/5518991544704" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
             <i className="fab fa-whatsapp" style={{fontSize: '22px', color: '#25D366'}}></i>
           </a>
         </li>
