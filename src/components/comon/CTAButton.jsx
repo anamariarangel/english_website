@@ -1,10 +1,9 @@
 import React from 'react';
-import whatsappIcon from '../../assets/images/whatsapp.png';
 
 const CTAButton = ({ text = "Agendar Avaliação Gratuita", whatsappNumber = "5518991544704" }) => (
   <button className="cta-button">
     <a href={`https://wa.me/${whatsappNumber}`} className="cta-button__link">
-      <img src={whatsappIcon} width="25" height="25" alt="WhatsApp" />
+      <i className="fab fa-whatsapp" style={{ fontSize: '25px', marginRight: '8px' }} aria-label="WhatsApp"></i>
       {text}
     </a>
   </button>

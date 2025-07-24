@@ -217,7 +217,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.74);
     z-index: 1;
   }
 
@@ -923,17 +923,22 @@ body {
   }
 
   .header {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 15px;
     padding: 20px;
     position: relative;
 
+    &__nav-list{
+      gap:40px;
+    }
+
     &__nav-item {
-      margin: 0 10px;
+      margin: 0;
+ 
 
       &:not(:last-child)::after {
-        right: -8px;
+        content:'';
       }
     }
   }
@@ -944,10 +949,12 @@ body {
 
     &__title {
       font-size: 2.5rem;
+      margin-bottom: 30px;
     }
 
     &__subtitle {
       font-size: 1.2rem;
+      margin-bottom: 30px;
       width: 95%;
     }
   }
