@@ -2,7 +2,7 @@
 // IMPORTS
 // ===========================
   @import './initialize';
-  
+
 // ===========================
 // DIFFERENTIALS SECTION
 // ===========================
@@ -59,6 +59,35 @@
       color: $text-gray;
       line-height: 1.7;
       font-size: 1rem;
+    }
+  }
+}
+
+.differentials {
+  // estilos já existentes...
+
+  @media (max-width: 768px) {
+    .differentials {
+      padding: 2rem 1rem;
+      text-align: center;
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .differential-item {
+        margin-bottom: 1.5rem;
+
+        img {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
     }
   }
 }

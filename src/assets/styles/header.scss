@@ -176,3 +176,27 @@
     transform: translateY(-1px) scale(1.02);
   }
 }
+
+ @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+
+      .hero-content {
+        padding: 1rem;
+        h1 {
+          font-size: 1.8rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .hero-image {
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+

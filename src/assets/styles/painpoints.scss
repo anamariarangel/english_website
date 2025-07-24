@@ -59,3 +59,33 @@
     margin: 0 auto;
   }
 }
+
+.pain-points {
+  // estilos já existentes...
+
+  @media (max-width: 768px) {
+    .pain-points {
+      padding: 2rem 1rem;
+
+      h2 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .point {
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+
+        p {
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

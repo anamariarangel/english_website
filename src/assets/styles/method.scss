@@ -79,3 +79,29 @@
     opacity: 0.9;
   }
 }
+
+.method {
+  // estilos já existentes...
+
+  @media (max-width: 768px) {
+    .method {
+      flex-direction: column;
+      padding: 2rem 1rem;
+
+      h2 {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+
+      .method-step {
+        margin-bottom: 1.5rem;
+
+        p {
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+

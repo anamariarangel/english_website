@@ -306,3 +306,32 @@
     width: 100%;
   }
 }
+
+
+.testimonials {
+  // estilos já existentes...
+
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 2rem 1rem;
+
+      h2 {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+
+      .testimonial {
+        margin-bottom: 2rem;
+
+        .quote {
+          font-size: 1rem;
+        }
+
+        .author {
+          margin-top: 0.5rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
