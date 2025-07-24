@@ -947,6 +947,7 @@ body {
   .hero {
     @include section-padding(100px, 60px);
     min-height: 70vh;
+     background-color: $black;
 
     &__title {
       font-size: 2.5rem;
