@@ -1,6 +1,7 @@
 import React from 'react';
 import CTAButton from '../comon/CTAButton';
 import { differentialsData } from '../../data/content';
+import '../../assets/styles/differentials.scss'
 
 const DifferentialItem = ({ icon, title, text }) => (
   <div className="differentials__item">
