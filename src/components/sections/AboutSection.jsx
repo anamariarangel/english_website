@@ -1,12 +1,13 @@
 import React from 'react';
 import CTAButton from '../comon/CTAButton';
+import fotoIsadora from '../assets/images/foto_isadora.jpg';
 
 const AboutSection = () => (
   <section className="about">
     <div className="container">
       <div className="about__content">
         <div className="about__photo">
-          <img src="../../assets/images/foto_isadora.jpg" width="350" height="350" alt="Isadora Alves" />
+          <img src={fotoIsadora} width="350" height="350" alt="Isadora Alves" />
         </div>
         <div className="about__text">
           <h2 className="about__title">Oi! Eu sou a Isadora!</h2>
