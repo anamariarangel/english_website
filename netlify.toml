@@ -3,31 +3,27 @@
   publish = "dist"
   functions = "netlify/functions"
 
-# A variável de ambiente GOOGLE_PLACES_API_KEY deve ser configurada
-# no painel de controle do Netlify.
-
-[[redirects]]
-  from = "/api/google-reviews"
-  to = "/.netlify/functions/google-reviews"
-  status = 200
-
+# Redirecionamentos para as funções (recomendado)
 [[redirects]]
   from = "/api/place-details"
   to = "/.netlify/functions/place-details"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/api/places"
   to = "/.netlify/functions/places"
   status = 200
+  force = true
 
+[[redirects]]
+  from = "/api/google-reviews"
+  to = "/.netlify/functions/google-reviews"
+  status = 200
+  force = true
+
+# Catch-all para a aplicação de página única (SPA)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-  [[redirects]]
-  from = "/.netlify/functions/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-  force = true
