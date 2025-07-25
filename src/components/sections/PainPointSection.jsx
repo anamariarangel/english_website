@@ -1,7 +1,7 @@
 import React from 'react';
 import CTAButton from '../comon/CTAButton';
 import { painPointsData } from '../../data/content';
-import '../../assets/styles/painpoints.scss'
+
 
 const PainPoint = ({ icon, text }) => (
   <div className="pain-points__item">

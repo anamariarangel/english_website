@@ -1,7 +1,7 @@
 import React from 'react';
 import CTAButton from '../comon/CTAButton';
 import { methodData } from '../../data/content';
-import '../../assets/styles/method.scss';
+
 const MethodItem = ({ icon, text }) => (
   <div className="method__item">
     <i className={`fas fa-${icon} method__icon`}></i>
