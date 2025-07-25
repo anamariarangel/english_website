@@ -1,0 +1,87 @@
+// ===========================
+// HERO SECTION
+// ===========================
+.hero {
+  @include flex-center;
+  @include section-padding(120px, 80px);
+  background-image: url('/src/assets/images/flag.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.74);
+    z-index: 1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+    opacity: 0.1;
+    z-index: 1;
+  }
+
+  &__content {
+    @include flex-center;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    @include text-shadow;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  &__subtitle {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0.95;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.3s both;
+  }
+}
+
+ @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+
+      .hero-content {
+        padding: 1rem;
+        h1 {
+          font-size: 1.8rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .hero-image {
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  }
