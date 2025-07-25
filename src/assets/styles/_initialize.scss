@@ -1,14 +1,14 @@
-
 /* ========================================
    POPPINS - FONTES LOCAIS
    ======================================== */
 
+
 /* Poppins Regular (400) */
 @font-face {
   font-family: 'Poppins';
-  src: url('./public/fonts/poppins-regular.woff2') format('woff2'),
-       url('./public/fonts/poppins-regular.woff') format('woff');
-  font-weight: 300;
+  src: url('/public/fonts/poppins/Poppins-Regular.woff2') format('woff2'),
+       url('/public/fonts/poppins/Poppins-Regular.woff') format('woff');
+  font-weight: 400; /* Corrigido para 400 */
   font-style: normal;
   font-display: swap;
 }
@@ -16,8 +16,8 @@
 /* Poppins Medium (500) */
 @font-face {
   font-family: 'Poppins';
-  src: url('./public/fonts/poppins-medium.woff2') format('woff2'),
-       url('./public/fonts/poppins-medium.woff') format('woff');
+  src: url('/public/fonts/poppins/Poppins-Medium.woff2') format('woff2'),
+       url('/public/fonts/poppins/Poppins-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -26,8 +26,8 @@
 /* Poppins SemiBold (600) */
 @font-face {
   font-family: 'Poppins';
-  src: url('./public/fonts/poppins-semibold.woff2') format('woff2'),
-       url('./public/fonts/poppins-semibold.woff') format('woff');
+  src: url('/public/fonts/poppins/Poppins-SemiBold.woff2') format('woff2'),
+       url('/public/fonts/poppins/Poppins-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -36,99 +36,18 @@
 /* Poppins Bold (700) */
 @font-face {
   font-family: 'Poppins';
-  src: url('./public/fonts/poppins-bold.woff2') format('woff2'),
-       url('./public/fonts/poppins-bold.woff') format('woff');
+  src: url('/public/fonts/poppins/Poppins-Bold.woff2') format('woff2'),
+       url('/public/fonts/poppins/Poppins-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* ========================================
-   FONT AWESOME - ÍCONES
-   ======================================== */
+/* ===========================
+   VARIABLES
+   =========================== */
 
-/* ========================================
-   POPPINS - FONTES LOCAIS
-   ======================================== */
-
-/* Poppins Regular (400) */
-@font-face {
-  font-family: 'Poppins';
-  src: url('./assets/fonts/poppins-regular.woff2') format('woff2'),
-       url('./assets/fonts/poppins-regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Poppins Medium (500) */
-@font-face {
-  font-family: 'Poppins';
-  src: url('./assets/fonts/poppins-medium.woff2') format('woff2'),
-       url('./assets/fonts/poppins-medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Poppins SemiBold (600) */
-@font-face {
-  font-family: 'Poppins';
-  src: url('./assets/fonts/poppins-semibold.woff2') format('woff2'),
-       url('./assets/fonts/poppins-semibold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Poppins Bold (700) */
-@font-face {
-  font-family: 'Poppins';
-  src: url('./assets/fonts/poppins-bold.woff2') format('woff2'),
-       url('./assets/fonts/poppins-bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ========================================
-   FONT AWESOME - ÍCONES (NPM)
-   ======================================== */
-
-/* Font Awesome Solid (.fas) */
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  src: url('../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2') format('woff2'),
-       url('../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Font Awesome Regular (.far) */
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  src: url('../node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2') format('woff2'),
-       url('../node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Font Awesome Brands (.fab) */
-@font-face {
-  font-family: 'Font Awesome 6 Brands';
-  src: url('../node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2') format('woff2'),
-       url('../node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-// ===========================
-// VARIABLES
-// ===========================
-$primary-color: #3b82f6;
+$primary-color: #074dbd;
 $primary-dark: #1e40af;
 $success-color: #10b981;
 $danger-color: #ef4444;
@@ -144,16 +63,16 @@ $star-color: #fbbf24;
 $star-empty: #d1d5db;
 $border-color: #e2e8f0;
 $border-light: #cbd5e1;
-$font-family: 'Poppins', sans-serif;
-$max-width: 1200px;
+$font-family: 'Poppins', sans-serif; /* Usada no body */
+$max-width: 1200px; /* Usada no .container */
 $border-radius: 15px;
 $border-radius-sm: 50px;
 $box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 $box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 
-// ===========================
-// MIXINS
-// ===========================
+/* ===========================
+   MIXINS
+   =========================== */
 @mixin flex-center($direction: column) {
   display: flex;
   flex-direction: $direction;
@@ -189,9 +108,9 @@ $box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   background-clip: text;
 }
 
-// ===========================
-// KEYFRAMES
-// ===========================
+/* ===========================
+   KEYFRAMES
+   =========================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -219,9 +138,10 @@ $box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   100% { transform: rotate(360deg); }
 }
 
-// ===========================
-// BASE STYLES
-// ===========================
+/* ===========================
+   BASE STYLES / RESETS
+   =========================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -236,15 +156,15 @@ html, body {
 }
 
 body {
-  font-family: $font-family;
+  font-family: $font-family; /* Usando a variável Sass */
   line-height: 1.6;
-  color: $text-color;
+  color: $text-color; /* Usando a variável Sass */
   overflow-x: hidden;
   width: 100%;
 }
 
 .container {
-  max-width: $max-width;
+  max-width: $max-width; /* Usando a variável Sass */
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
