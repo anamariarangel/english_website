@@ -72,6 +72,14 @@
         max-width: 280px;
         margin: 0 auto;
       }
+        
+    &__content {
+  display: grid;
+  grid-template-columns: 1fr; // agora é uma coluna só
+  gap: 30px;
+  align-items: center;
+  width: 100%;
+      }
     }
   }
 }
