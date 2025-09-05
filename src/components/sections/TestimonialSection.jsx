@@ -137,7 +137,7 @@ const TestimonialsSection = () => {
 
           {error && (
             <div className="test_error" role="alert">
-              <p>⚠️ Dados carregados do cache local</p>
+            
             </div>
           )}
         </header>
